@@ -38,6 +38,7 @@ function power(a, b) {
 let num1; // first button that is clicked
 let operator = "add" || "subtract" || "multiply" || "divide" || "power"; // Will hook up to buttons with operator symbols
 let num2; // second button that is clicked
+
 function operate(num1, num2, operator) {
 	switch (operator) {
 		case "add":
