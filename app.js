@@ -59,4 +59,7 @@ function operate(num1, num2, operator) {
 	}
 }
 
-/* Populating Display */
+/* Populating Bottom Display */
+
+// Grab bottom display
+const bottomDisplay = document.querySelector("#bottomDisplay");
