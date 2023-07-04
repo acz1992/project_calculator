@@ -61,5 +61,21 @@ function operate(num1, num2, operator) {
 
 /* Populating Bottom Display */
 
-// Grab bottom display
+let bottomDisplayValue = 0; // initialise bottom display value
+
+// Grab bottom display & have it read bottomDisplayValue
 const bottomDisplay = document.querySelector("#bottomDisplay");
+bottomDisplay.innerHTML += bottomDisplayValue;
+
+// Grab numBtns & update bottom display with each click
+const numBtns = document.querySelectorAll(".numBtns");
+numBtns.forEach((numBtn) => {
+	numBtn.addEventListener("click", () => {
+		updateDisplay(numBtn.id);
+	});
+});
+
+function updateDisplay(value) {
+	bottomDisplayValue = value;
+	bottomDisplay.innerHTML = bottomDisplayValue;
+}
