@@ -61,11 +61,11 @@ function operate(num1, num2, operator) {
 
 /* Populating Bottom Display */
 
-let bottomDisplayValue = 0; // initialise bottom display value
+let bottomDisplayValue = ""; // initialise bottom display value
 
 // Grab bottom display & have it read bottomDisplayValue
 const bottomDisplay = document.querySelector("#bottomDisplay");
-bottomDisplay.innerHTML += bottomDisplayValue;
+bottomDisplay.innerHTML = bottomDisplayValue;
 
 // Grab numBtns & update bottom display with each click
 const numBtns = document.querySelectorAll(".numBtns");
@@ -76,6 +76,6 @@ numBtns.forEach((numBtn) => {
 });
 
 function updateDisplay(value) {
-	bottomDisplayValue = value;
+	bottomDisplayValue += value;
 	bottomDisplay.innerHTML = bottomDisplayValue;
 }
