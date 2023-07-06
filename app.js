@@ -134,3 +134,56 @@ function updateDisplay(value) {
 		secondInputHasDecimal = true;
 	}
 }
+
+/* Clear and Delete */
+
+// Reset all variables to initial value
+function clear() {
+	// "undefined" represents absence of a value or uninitialized variables
+	num1 = undefined;
+	num2 = undefined;
+	operator = undefined;
+	isFirstInput = true;
+	bottomDisplayValue = "";
+	bottomDisplay.innerHTML = bottomDisplayValue;
+	topDisplayValue = "";
+	topDisplay.innerHTML = topDisplayValue;
+	firstInputHasDecimal = false;
+	secondInputHasDecimal = false;
+}
+
+const clearBtn = document.querySelector("#clear");
+clearBtn.addEventListener("click", (e) => {
+	console.log(e);
+	clear();
+});
+
+// To do: when solution appears on bottomDisplay, delete should bring back to secondInput on bottomDisplay and firstInput and operator on topDisplay
+function deleteLastEntry() {
+	if (isFirstInput) {
+		// Remove the last digit from firstInput
+		const firstInputString = bottomDisplayValue.toString();
+		bottomDisplayValue = firstInputString.slice(0, -1);
+		bottomDisplay.innerHTML = bottomDisplayValue;
+	} else {
+		// Remove the last operator from topDisplay
+		const topDisplayString = topDisplay.innerHTML.toString();
+		const operators = Object.values(operatorSymbols).join("");
+		const regex = new RegExp(`[${operators}]`);
+		const lastOperatorIndex = topDisplayString.search(regex);
+
+		if (lastOperatorIndex !== -1) {
+			topDisplayValue = topDisplayString.slice(0, lastOperatorIndex);
+			topDisplay.innerHTML = topDisplayValue;
+			operator = undefined;
+		}
+
+		bottomDisplayValue = firstInput.toString();
+		bottomDisplay.innerHTML = bottomDisplayValue;
+	}
+}
+
+const deleteBtn = document.querySelector("#delete");
+deleteBtn.addEventListener("click", () => {
+	deleteLastEntry();
+});
