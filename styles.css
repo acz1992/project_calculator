@@ -46,6 +46,9 @@ main {
 	text-align: right;
 	font-family: "VT323", monospace;
 	letter-spacing: 5px;
+	/* Below allows for large numbers and decimals*/
+	word-wrap: break-word;
+	/* word-break: break-all; */
 }
 
 #topDisplay {
