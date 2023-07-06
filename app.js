@@ -1,18 +1,5 @@
 /* Math functions */
 
-// More complex Add Functions that add more than two numbers
-/* function add(array) {
-    return array.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-    } */
-
-/*     function add(array) {
-        let sum = 0;
-        for(let i = 0; i < array.length; i++) {
-            sum += array[i]
-        }
-        return sum
-    } */
-
 function add(a, b) {
 	return a + b;
 }
@@ -53,9 +40,6 @@ function operate(num1, num2, operator) {
 		case "divide":
 			return divide(num1, num2);
 			break;
-		case "power":
-			return power(num1, num2);
-			break;
 	}
 }
 
@@ -84,16 +68,34 @@ function updateDisplay(value) {
 
 /* Top Display */
 
+// Initialize topDisplayValue
 const topDisplay = document.querySelector("#topDisplay");
 let topDisplayValue = "";
 topDisplay.innerHTML = topDisplayValue;
 
 /* Operation Buttons */
+
+// Declare variables globally
+let firstInput;
+let secondInput;
+
+// Add event listeners to operation buttons
 const operationBtns = document.querySelectorAll(".operationBtns");
 operationBtns.forEach((operationBtn) => {
 	operationBtn.addEventListener("click", () => {
-		topDisplay.innerHTML = bottomDisplayValue + operationBtn.innerHTML;
+		// Save first input and operation
+		firstInput = bottomDisplayValue;
+		operation = operationBtn.id;
+		// clear bottom display and add initial value to Top Display
+		topDisplay.innerHTML = firstInput + operationBtn.innerHTML;
 		bottomDisplayValue = "";
 		bottomDisplay.innerHTML = bottomDisplayValue;
 	});
+});
+
+// Call Operate function when "equals" clicked
+const equals = document.querySelector("#equals");
+equals.addEventListener("click", () => {
+	let solution = operate(firstInput, secondInput, operator);
+	updateDisplay(solution);
 });
