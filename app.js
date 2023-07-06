@@ -81,3 +81,19 @@ function updateDisplay(value) {
 	}
 	bottomDisplay.innerHTML = bottomDisplayValue;
 }
+
+/* Top Display */
+
+const topDisplay = document.querySelector("#topDisplay");
+let topDisplayValue = "";
+topDisplay.innerHTML = topDisplayValue;
+
+/* Operation Buttons */
+const operationBtns = document.querySelectorAll(".operationBtns");
+operationBtns.forEach((operationBtn) => {
+	operationBtn.addEventListener("click", () => {
+		topDisplay.innerHTML = bottomDisplayValue + operationBtn.innerHTML;
+		bottomDisplayValue = "";
+		bottomDisplay.innerHTML = bottomDisplayValue;
+	});
+});
