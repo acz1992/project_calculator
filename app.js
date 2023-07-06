@@ -76,6 +76,8 @@ numBtns.forEach((numBtn) => {
 });
 
 function updateDisplay(value) {
-	bottomDisplayValue += value;
+	if (bottomDisplayValue.length < 14) {
+		bottomDisplayValue += value;
+	}
 	bottomDisplay.innerHTML = bottomDisplayValue;
 }
