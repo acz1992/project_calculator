@@ -158,7 +158,6 @@ clearBtn.addEventListener("click", (e) => {
 	clear();
 });
 
-// To do: when solution appears on bottomDisplay, delete should bring back to secondInput on bottomDisplay and firstInput and operator on topDisplay
 function deleteLastEntry() {
 	if (isFirstInput) {
 		// Remove the last digit from firstInput
