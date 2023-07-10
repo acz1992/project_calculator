@@ -16,16 +16,14 @@ function divide(a, b) {
 	return a / b;
 }
 
-function power(a, b) {
-	return a ** b;
-}
-
 /* Calculator Initialisation */
 
 let num1; // first button that is clicked
-/* let operator = "add" || "minus" || "multiply" || "divide" || "power"; */ // Will hook up to buttons with operator symbols
 let num2; // second button that is clicked
-let operator;
+let operator = null; // determines whether operator already been selected
+// Keep track whether current input is first or second
+let isFirstInput = true;
+let secondOperator = null;
 
 function operate(num1, num2, operator) {
 	switch (operator) {
@@ -72,21 +70,29 @@ topDisplay.innerHTML = topDisplayValue;
 // Declare variables globally
 let firstInput;
 let secondInput;
-// Keep track whether current input is first or second
-let isFirstInput = true;
+let solution;
 
 // Add event listeners to operation buttons
 const operationBtns = document.querySelectorAll(".operationBtns");
 operationBtns.forEach((operationBtn) => {
-	operationBtn.addEventListener("click", () => {
-		// Save first input and operation
-		firstInput = Number(bottomDisplayValue);
-		operator = operationBtn.id;
-		// clear bottom display and add initial value to Top Display
-		topDisplay.innerHTML = firstInput + operationBtn.innerHTML;
-		bottomDisplayValue = "";
-		bottomDisplay.innerHTML = bottomDisplayValue;
-		isFirstInput = false;
+	operationBtn.addEventListener("click", (e) => {
+		if (operator === null) {
+			// First time an operator is being selected
+			firstInput = Number(bottomDisplayValue);
+			operator = operationBtn.id;
+			topDisplay.innerHTML = `${firstInput} ${operatorSymbols[operator]}`;
+			bottomDisplayValue = "";
+			bottomDisplay.innerHTML = bottomDisplayValue;
+		} else {
+			// Operator has already been selected
+			secondInput = Number(bottomDisplayValue);
+			solution = operate(firstInput, secondInput, operator);
+			firstInput = solution;
+			operator = operationBtn.id;
+			topDisplay.innerHTML = `${firstInput} ${operatorSymbols[operator]}`;
+			bottomDisplayValue = "";
+			bottomDisplay.innerHTML = bottomDisplayValue;
+		}
 	});
 });
 
@@ -106,7 +112,7 @@ equals.addEventListener("click", () => {
 		//
 		topDisplay.innerHTML = `${firstInput} ${operatorSymbols[operator]} ${secondInput}`;
 		bottomDisplayValue = "";
-		let solution = operate(firstInput, secondInput, operator);
+		solution = operate(firstInput, secondInput, operator);
 		updateDisplay(solution);
 	}
 });
@@ -139,10 +145,9 @@ function updateDisplay(value) {
 
 // Reset all variables to initial value
 function clear() {
-	// "undefined" represents absence of a value or uninitialized variables
-	num1 = undefined;
-	num2 = undefined;
-	operator = undefined;
+	// reset all variables to initial value
+	num2 = null;
+	operator = null;
 	isFirstInput = true;
 	bottomDisplayValue = "";
 	bottomDisplay.innerHTML = bottomDisplayValue;
