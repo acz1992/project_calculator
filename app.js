@@ -42,6 +42,74 @@ function operate(num1, num2, operator) {
 	}
 }
 
+/* Adding Keyboard Functionality */
+
+// Add keydown Event Listener
+document.addEventListener("keydown", handleKeyDown);
+
+//Define "handleKeyDown" function to handle key press events
+function handleKeyDown(event) {
+	// Get the key pressed
+	const keyCode = event.keyCpde || event.which;
+	// Map the keycode to corresponding calculator button
+	switch (keyCode) {
+		case 48: // 0
+			document.getElementById("0").click();
+			break;
+		case 49: // 1
+			document.getElementById("1").click();
+			break;
+		case 50: // 2
+			document.getElementById("2").click();
+			break;
+		case 51: // 3
+			document.getElementById("3").click();
+			break;
+		case 52: // 4
+			document.getElementById("4").click();
+			break;
+		case 53: // 5
+			document.getElementById("5").click();
+			break;
+		case 54: // 6
+			document.getElementById("6").click();
+			break;
+		case 55: // 7
+			document.getElementById("7").click();
+			break;
+		case 56: // 8
+			document.getElementById("8").click();
+			break;
+		case 57: // 9
+			document.getElementById("9").click();
+			break;
+		case 187: // +
+			document.getElementById("add").click();
+			break;
+		case 189: // -
+			document.getElementById("minus").click();
+			break;
+		case 88: // *
+			document.getElementById("multiply").click();
+			break;
+		case 191: // /
+			document.getElementById("divide").click();
+			break;
+		case 190: // .
+			document.getElementById(".").click();
+			break;
+		case 13: // Enter
+			document.getElementById("equals").click();
+			break;
+		case 8: // Backspace
+			document.getElementById("delete").click();
+			break;
+		case 46: // Delete
+			document.getElementById("clear").click();
+			break;
+	}
+}
+
 /* Populating Bottom Display */
 
 let bottomDisplayValue = ""; // initialise bottom display value

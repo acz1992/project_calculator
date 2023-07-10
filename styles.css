@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=VT323&display=swap");
 
-/* To do:
--add shadow effect to make buttons seem real
--add pseudo classes */
-
 * {
 	box-sizing: border-box;
 	padding: 0;
@@ -78,6 +74,11 @@ hr {
 	padding: 5px 0 0;
 }
 
+.operationBtns,
+#equals {
+	background-color: #0e89ef !important;
+}
+
 .btns {
 	display: flex;
 	justify-content: center;
@@ -90,6 +91,19 @@ hr {
 	color: rgb(255, 255, 255);
 	border: white 0.1px solid;
 }
+
+.btns:active {
+	transform: scale(0.98);
+	/* Scaling button to 0.98 to its original size */
+	box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+	/* Lowering the shadow */
+}
+
+/* .numBtns:active {
+}
+
+.operatorBtns:active {
+} */
 
 #clear {
 	background-color: rgb(245, 93, 66);
