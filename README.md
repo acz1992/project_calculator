@@ -4,7 +4,6 @@ A simple Calculator app
 
 Still to do:
 
-2 - Allow calculator to string operations from one to another
 3 - Hook up buttons to computer keyboard
 
 Notepad:
